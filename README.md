@@ -11,4 +11,4 @@ I used the OpenWeather One Call API to retrieve weather data for cities. I used 
 <p dir="auto"><a href="https://github.com/Yanbud/weather-dashboard">Link to the code repository</a></p>
 
 ## Screenshot
-<p dir="auto"><img src="Screenshot.gif" alt="Screenshot" style="max-width: 100%;" /></p>
+<p dir="auto"><img src="Screenshot.png" alt="Screenshot" style="max-width: 100%;" /></p>
