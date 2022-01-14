@@ -95,16 +95,16 @@ var displayToday = function(data, city) {
     var detailUV = document.createElement('div');
     var detailUVindex = document.createElement('span');
     var num = data.current.uvi;
-    if (num < 3) {
-        detailUVindex.classList = 'level-low';
-    } else if (num > 3) {
-        detailUVindex.classList = 'level-moderate';
-    } else if (num > 5) {
-        detailUVindex.classList = 'level-high';
-    } else if (num > 7) {
-        detailUVindex.classList = 'level-veryhigh';
-    } else if (num >= 11) {
+    if (num >= 11) {
         detailUVindex.classList = 'level-extreme';
+    } else if (num >= 8) {
+        detailUVindex.classList = 'level-veryhigh';
+    } else if (num >= 6) {
+        detailUVindex.classList = 'level-high';
+    } else if (num >= 3) {
+        detailUVindex.classList = 'level-moderate';
+    } else {
+        detailUVindex.classList = 'level-low';
     }
     detailUVindex.textContent = num;
     detailUV.append('UV Index:   ', detailUVindex);
