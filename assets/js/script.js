@@ -15,7 +15,9 @@ var formSubmitHandler = function(event) {
     city.charAt(0).toUpperCase();
     city = city.charAt(0).toUpperCase() + city.slice(1);
     if (city) {
-        cityList.push(city);
+        if (!cityList.includes(city)) {
+            cityList.push(city);
+        }
         cityList.reverse();
         cityInputEl.value = '';
         getCity(city);
@@ -31,7 +33,9 @@ var formSubmitHandler = function(event) {
 };
 
 var buttonClickHandler = function(event) {
+    // `event.target` is a reference to the DOM element of what city button was clicked on the page
     var city = event.target.getAttribute('data-city');
+    // If there is no city read from the button, don't attempt to fetch data
     if (city) {
         getCity(city);
         days5El.textContent = '';
@@ -68,6 +72,7 @@ var dataOnecall = function(lat, lon, city) {
             response.json().then(function(data) {
                 displayToday(data, city);
                 display5days(data);
+                console.log(data)
             });
         } else {
             alert('Error: ' + response.statusText);
@@ -147,7 +152,7 @@ var display5days = function(data) {
         weatherEl.appendChild(iconEl);
 
         var detailTemp = document.createElement('div');
-        detailTemp.textContent = 'Temp:   ' + data.daily[i].temp.eve + ' °F';
+        detailTemp.textContent = 'Temp:   ' + data.daily[i].temp.day + ' °F';
 
         var detailWind = document.createElement('div');
         detailWind.textContent = 'Wind:   ' + data.daily[i].wind_speed + ' MPH';
